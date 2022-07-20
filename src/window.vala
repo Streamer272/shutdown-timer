@@ -17,13 +17,10 @@
  */
 
 namespace ShutdownTimer {
-    [GtkTemplate (ui = "/com/streamer272/ShutdownTimer/gtk/window.ui")]
+    [GtkTemplate(ui = "/com/streamer272/ShutdownTimer/gtk/window.ui")]
     public class Window : Gtk.ApplicationWindow {
-        [GtkChild]
-        private unowned Gtk.Label label;
-
-        public Window (Gtk.Application app) {
-            Object (application: app);
+        public Window(Gtk.Application app) {
+            Object(application: app);
         }
     }
 }

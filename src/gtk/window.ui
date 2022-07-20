@@ -6,6 +6,11 @@
     <property name="default-height">300</property>
     <child type="titlebar">
       <object class="GtkHeaderBar" id="header_bar">
+        <child type="start">
+          <object class="GtkButton">
+            // TODO add icon
+          </object>
+        </child>
         <child type="end">
           <object class="GtkMenuButton">
             <property name="icon-name">open-menu-symbolic</property>
@@ -14,13 +19,41 @@
         </child>
       </object>
     </child>
+
     <child>
-      <object class="GtkLabel" id="label">
-        <property name="label">Hello, World!</property>
-        <attributes>
-          <attribute name="weight" value="bold"/>
-          <attribute name="scale" value="2"/>
-        </attributes>
+      <object class="GtkBox">
+        <property name="orientation">horizontal</property>
+        <property name="halign">center</property>
+        <property name="valign">center</property>
+        <property name="spacing">5</property>
+
+        <child>
+          <object class="GtkLabel">
+            <property name="label">Shut down</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkDropDown">
+            <property name="model">
+              <object class="GtkStringList">
+                <items>
+                  <item>at</item>
+                  <item>in</item>
+                </items>
+              </object>
+            </property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkEntry">
+            <property name="placeholder-text">value</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton">
+            <property name="label">Go</property>
+          </object>
+        </child>
       </object>
     </child>
   </template>
