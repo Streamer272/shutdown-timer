@@ -1,0 +1,7 @@
+data/com.streamer272.ShutdownTimer.desktop.in
+data/com.streamer272.ShutdownTimer.appdata.xml.in
+data/com.streamer272.ShutdownTimer.gschema.xml
+src/window.ui
+src/main.vala
+src/window.vala
+

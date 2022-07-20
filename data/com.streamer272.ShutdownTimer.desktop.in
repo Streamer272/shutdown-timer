@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Shutdown Timer
+Exec=shutdown-timer
+Icon=com.streamer272.ShutdownTimer
+Terminal=false
+Type=Application
+Categories=GTK;
+StartupNotify=true
