@@ -19,8 +19,61 @@
 namespace ShutdownTimer {
     [GtkTemplate(ui = "/com/streamer272/ShutdownTimer/gtk/window.ui")]
     public class Window : Gtk.ApplicationWindow {
+        [GtkChild]
+        private unowned Gtk.Button button_cancel;
+        [GtkChild]
+        private unowned Gtk.DropDown dropdown_time;
+        [GtkChild]
+        private unowned Gtk.Entry entry_time;
+        [GtkChild]
+        private unowned Gtk.Button button_ok;
+
         public Window(Gtk.Application app) {
             Object(application: app);
+
+            button_cancel.clicked.connect(cancel);
+            entry_time.activate.connect(submit);
+            button_ok.clicked.connect(submit);
+        }
+
+        public void submit() {
+            uint at = dropdown_time.get_selected();
+            string time = entry_time.get_text();
+
+            string stdout;
+            string stderr;
+            int exit;
+            if (at == 0) {
+                try {
+                    Process.spawn_command_line_sync(@"shutdown --halt $time", out stdout, out stderr, out exit);
+                }
+                catch (SpawnError e) {
+                    if (exit != 0)
+                        message(@"Failed with $exit");
+                }
+            }
+            else {
+                try {
+                    Process.spawn_command_line_sync(@"shutdown --halt +$time", out stdout, out stderr, out exit);
+                }
+                catch (SpawnError e) {
+                    if (exit != 0)
+                        message(@"Failed with $exit");
+                }
+            }
+        }
+
+        public void cancel() {
+            string stdout;
+            string stderr;
+            int exit;
+            try {
+                Process.spawn_command_line_sync(@"shutdown -c", out stdout, out stderr, out exit);
+            }
+            catch (SpawnError e) {
+                if (exit != 0)
+                    message(@"Failed with $exit");
+            }
         }
     }
 }

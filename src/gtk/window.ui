@@ -7,8 +7,9 @@
     <child type="titlebar">
       <object class="GtkHeaderBar" id="header_bar">
         <child type="start">
-          <object class="GtkButton">
-            // TODO add icon
+          <object class="GtkButton" id="button_cancel">
+            <property name="icon-name">cross-filled-symbolic</property>
+            <property name="tooltip-text">Cancel</property>
           </object>
         </child>
         <child type="end">
@@ -33,7 +34,7 @@
           </object>
         </child>
         <child>
-          <object class="GtkDropDown">
+          <object class="GtkDropDown" id="dropdown_time">
             <property name="model">
               <object class="GtkStringList">
                 <items>
@@ -45,13 +46,13 @@
           </object>
         </child>
         <child>
-          <object class="GtkEntry">
+          <object class="GtkEntry" id="entry_time">
             <property name="placeholder-text">value</property>
           </object>
         </child>
         <child>
-          <object class="GtkButton">
-            <property name="label">Go</property>
+          <object class="GtkButton" id="button_ok">
+            <property name="label">Ok</property>
           </object>
         </child>
       </object>
